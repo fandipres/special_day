@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa !important;
+    color: #333;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#title {
+    font-size: 3rem;
+    color: #007bff;
+}
+
+#event {
+    font-size: 2rem;
+    color: #28a745;
+}
+
+#countdown {
+    font-size: 1.5rem;
+}
+
+input.form-control {
+    width: 50%;
+    margin: 20px auto;
+}
+
+.date-instruction {
+    color: #999;
+    font-size: 12px;
+    margin-top: 10px;
+}

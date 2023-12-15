@@ -1,115 +1,31 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Special Days Countdown</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        h1, h2, h3 {
-            text-transform: uppercase;
-            text-align: center;
-        } 
-        h1 {
-            font-size: 4rem;
-        }
-        h2, h3 {
-            font-size: 3rem;
-        }
-        .main{
-            padding: 3rem 0 3rem 0;
-            margin: auto;
-            width: 50%;
-        }
-        input {
-            text-indent: .25rem;
-            padding: 1rem 0 1rem 0;
-            width: 100%;
-        }
-        @media (max-width: 575px) {
-            html {font-size: 12px;}
-            h3 {font-size: 2rem;}
-        }
-        @media (min-width: 576px) and (max-width: 767px) {
-            html {font-size: 14px;}
-            h3 {font-size: 2rem;}
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Day Countdown</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body>
-    <h1 id="title"></h1>
-    <div class="main">
-        <input name="choose_date" list="date" placeholder="Please type or choose the date..." label="">
-        <datalist id="date">
-            <option value="2 September" label="Happy Birthday Fandi">
-            <option value="25 Desember" label="Hari Raya Natal">
-        </datalist>
+    <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="container text-center">
+            <h1 id="title" class="mb-5">SPECIAL DAY</h1>
+            <input id="date" list="date_list" placeholder="Please enter or choose the date..."
+                class="form-control col-md-4">
+            <datalist id="date_list"></datalist>
+            <p class="date-instruction mb-5">Please enter the date in the format: DD MMM (e.g., 25 Des)</p>
+            <div class="mb-5">
+                <h2 id="event"></h2>
+                <h3 id="countdown"></h3>
+            </div>
+        </div>
     </div>
-    <h2 id="event"></h2>
-    <h3 id="countdown"></h3>
-    <script>
-        var tahun = new Date().getFullYear()
-        document.getElementById("title").innerHTML = "Special Day " + tahun
-
-        var x
-        var choosen = document.getElementsByName("choose_date")[0]
-        choosen.addEventListener("input", function () {
-            var datalist = document.getElementById("date").children
-            var i = datalist.length
-            while(i--){
-                var option = datalist[i]
-                if(option.value == choosen.value){
-                    document.getElementById("event").innerHTML = option.label
-                    break
-                }
-                else
-                    document.getElementById("event").innerHTML = choosen.value + " " + tahun
-            }
-
-            clearInterval(x)
-            var value = this.value
-            if(value == ""){
-                document.getElementById("event").innerHTML =
-                document.getElementById("countdown").innerHTML = ""
-            }
-
-            var tanggal = value.split(" ")[0]
-            var bulan = value.split(" ")[1].slice(0, 3)
-            if(bulan.toUpperCase() == "MEI")
-                bulan = "May"
-            if(bulan.toUpperCase() == "AGU")
-                bulan = "Aug"
-            if(bulan.toUpperCase() == "OKT")
-                bulan = "Oct"
-            if(bulan.toUpperCase() == "DES")
-                bulan =  "Dec"
-
-            // Set the date we're counting down to
-            var countDownDate = new Date(bulan + " " + tanggal + "," + tahun + " 00:00:00").getTime();
-
-            // Update the count down every 1 second
-            x = setInterval(function () {
-
-                // Get today's date and time
-                var now = new Date().getTime();
-
-                // Find the distance between now and the count down date
-                var distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Output the result in an element with id="demo"
-                document.getElementById("countdown").innerHTML = days + '<font size="4"> Hari </font>' + hours + '<font size="4"> Jam </font>' + minutes + '<font size="4"> Menit </font>' + seconds + '<font size="4"> Detik </font>'
-
-                // If the count down is over, write some text 
-                if (distance < 0) {
-                    clearInterval(x);
-                    document.getElementById("countdown").innerHTML = "EXPIRED"
-                }
-            }, 1000)
-        })
-    </script>
+    <script src="index.js"></script>
+    <script src="dates.js"></script>
 </body>
+
 </html>
