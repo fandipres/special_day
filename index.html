@@ -13,8 +13,11 @@
 <body>
     <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
         <div class="container text-center">
-            <h1 id="title" class="mb-5">SPECIAL DAY</h1>
-            <input id="date" list="date_list" placeholder="Please enter or choose the date..."
+            <h1 id="title">SPECIAL DAY <span class="year"></span></h1>
+            <p>Not in <span class="year mb-5"></span>? Change the year by clicking <b><span id="inc">+</span></b> or
+                <b><span id="dec">-</span></b>
+            </p>
+            <input id="choosen_date" list="date_list" placeholder="Please enter or choose the date..."
                 class="form-control col-md-4">
             <datalist id="date_list"></datalist>
             <p class="date-instruction mb-5">Please enter the date in the format: DD MMM (e.g., 25 Des)</p>
@@ -24,8 +27,8 @@
             </div>
         </div>
     </div>
-    <script src="index.js"></script>
-    <script src="dates.js"></script>
+    <script src="./js/index.js"></script>
+    <script src="./js/dates.js"></script>
 </body>
 
 </html>
