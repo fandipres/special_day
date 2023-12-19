@@ -71,7 +71,9 @@ function UpdateYear(year) {
     el_year.forEach(el => {
         el.innerText = year;
     });
-    el_event.innerHTML = `${el_event.innerHTML.split(" ")[0]} ${el_event.innerHTML.split(" ")[1]} ${year}`
+    if (el_event.innerHTML.split(" ")[2].length === 4 && !isNaN(el_event.innerHTML.split(" ")[2])) {
+        el_event.innerHTML = `${el_event.innerHTML.split(" ")[0]} ${el_event.innerHTML.split(" ")[1]} ${year}`
+    }
 }
 
 function ChangeYear(action) {
